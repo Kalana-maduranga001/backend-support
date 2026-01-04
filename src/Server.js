@@ -14,6 +14,10 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"))
 
+// AUTH ROUTTES
+const authRoutes = require("./routes/authRoutes");
+app.use("api/auth" , authRoutes);
+
 app.get("/", (req, res) => {
   res.send("Clothing API Running 🚀");
 });
