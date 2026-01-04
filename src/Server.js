@@ -6,6 +6,7 @@ const dotenv = require("dotenv") // Reads values from a .env  file / Node cannot
 
 dotenv.config();
 connectDB();
+console.log("ENV CHECK:", process.env.MONGO_URI);
 
 const app = express();
 
