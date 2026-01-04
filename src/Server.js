@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const morgan = require("morgan");
+const dotenv = require("dotenv") // Reads values from a .env  file / Node cannot read this automatically ❌
 
 dotenv.config();
 connectDB();
