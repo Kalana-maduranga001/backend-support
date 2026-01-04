@@ -1,14 +1,19 @@
 const express = require("express");
 const cors = require("cors");
-require("dotenv").config();
+const connectDB = require("./config/db");
+const morgan = require("morgan");
+
+dotenv.config();
+connectDB();
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(morgan("dev"))
 
 app.get("/", (req, res) => {
-  res.send("Backend running 🚀");
+  res.send("Clothing API Running 🚀");
 });
 
 const PORT = process.env.PORT || 5000;
