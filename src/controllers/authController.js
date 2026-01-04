@@ -15,6 +15,9 @@ exports.register = async(req , res) => {
             return res.status(400).json({message: "User alredy exsists"});
         }
         //hash password
+        const salt = await bcrypt.getSalt(10);
+        const hashedPassword = await bcrypt.hash(password , salt);
+        //create user
     }catch(error){
         console.error("Registration error:", error.message);
         res.status(500).json({ message: "Server Error" });
