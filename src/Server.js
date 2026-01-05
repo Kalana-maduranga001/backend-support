@@ -14,9 +14,6 @@ dotenv.config();
   app.use(express.json());
   app.use(morgan("dev"));
 
-  const authRoutes = require("./routes/authRoutes");
-  app.use("/api/auth", authRoutes);
-
   app.get("/", (req, res) => {
     res.send("Clothing API Running 🚀");
   });
@@ -25,4 +22,16 @@ dotenv.config();
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
+
+  const authRoutes = require("./routes/authRoutes");
+  app.use("/api/auth", authRoutes);
+
+  const { protect } = require("./middleware/authMiddleware");
+  app.get("/api/protected" , protect, (req , res) => {
+    res.json({
+      message: "You have accessed a protected route",
+      user: req.user,
+    });
+  });
+
 })();
