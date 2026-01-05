@@ -37,11 +37,15 @@ exports.register = async (req, res) => {
 exports.login = async (req , res) => {
    const {email , password} = req.body;
    try{
-       const user = await User.findOne({email});
-       if(!user){
-            return res.status(400).json({message: "Invalid credentials"});
-       }
+       const userEmail = await User.findOne({email});
+        if(!userEmail){
+            return res.status(400).json({message: "Invalid Email."});
+        }
+        const isMatch = await bcrypt.compare(password , userEmail.password);
+        if(!isMatch){
+            return res.status(400).json({message: "Invalid Password."});
+        }
     }catch(error){
-
+        res.status(500).json({message:"Server Error"});
     }
 };
