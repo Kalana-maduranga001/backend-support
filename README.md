@@ -14,7 +14,7 @@ A **complete JWT-based authentication system** using **Node.js + React**, design
 ✔ Logout
 ✔ Role-Based Access Control (Admin / User)
 
----
+---------------------
 
 ## 🧩 Project Structure Overview
 
@@ -70,7 +70,7 @@ API.post("/auth/login", data);
 ## ⚙ Axios Helper Setup (Core Concept)
 
 ### ❓ What is this Axios file?
-
+ ## Axios is a JavaScript library used to send HTTP requests to a backend or API.
 🚫 Not a command
 🚫 Not auto-generated
 
